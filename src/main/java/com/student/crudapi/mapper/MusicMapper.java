@@ -12,6 +12,6 @@ public interface MusicMapper {
     @Select("SELECT * FROM musics")
     List<Music> findAll();
 
-    @Select("SELECT * FROM musics WHERE id = #{id}")
+    @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Music> findById(int id);
 }
