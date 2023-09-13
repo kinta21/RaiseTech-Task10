@@ -1,6 +1,5 @@
 package com.student.crudapi.controller;
 
-import com.student.crudapi.MusicResponse;
 import com.student.crudapi.entity.Music;
 import com.student.crudapi.service.MusicService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +27,8 @@ public class MusicController {
         return musics;
     }
     @GetMapping("/musics/{id}")
-    public MusicResponse findById(@PathVariable int id) throws Exception {
-        Optional<Music> music = musicService.findById(id);
-        return new MusicResponse();
+    public Optional<Music> findById(@PathVariable int id) throws Exception {
+        Optional<Music> musics = musicService.findById(id);
+        return musics;
     }
 }
