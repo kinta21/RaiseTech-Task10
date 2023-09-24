@@ -1,22 +1,28 @@
-package com.student.crudapi.entity;
+package com.student.crudapi.controller;
 
-public class Music {
+import com.student.crudapi.entity.Music;
+
+public class MusicResponse {
+
     private int id;
     private String composer;
     private String representativeSong;
 
-    public Music(String composer, String representativeSong) {
-        this.composer = composer;
-        this.representativeSong = representativeSong;
-    }
-
-    public Music(int id, String composer, String representativeSong) {
+    public MusicResponse(Music music)  {
         this.id = id;
         this.composer = composer;
         this.representativeSong = representativeSong;
     }
 
-    public Music() {
+    public MusicResponse(String composer, String representativeSong) {
+        this.composer = composer;
+        this.representativeSong = representativeSong;
+    }
+
+    public MusicResponse(int id, String composer, String representativeSong) {
+        this.id = id;
+        this.composer = composer;
+        this.representativeSong = representativeSong;
     }
 
     public int getId() {
@@ -43,5 +49,3 @@ public class Music {
         this.representativeSong = representativeSong;
     }
 }
-
-
