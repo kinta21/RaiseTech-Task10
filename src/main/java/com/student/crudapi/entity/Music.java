@@ -16,9 +16,6 @@ public class Music {
         this.representativeSong = representativeSong;
     }
 
-    public Music() {
-    }
-
     public int getId() {
         return id;
     }
@@ -43,5 +40,3 @@ public class Music {
         this.representativeSong = representativeSong;
     }
 }
-
-

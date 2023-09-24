@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class MusicServiceImpl implements MusicService {
 
-    private MusicMapper musicMapper;
+    private  MusicMapper musicMapper;
     public MusicServiceImpl(MusicMapper musicMapper) {
         this.musicMapper = musicMapper;
     }
@@ -24,27 +24,22 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public Music findById (int id) {
         Optional<Music> music = this.musicMapper.findById(id);
-        if (music.isPresent()) {
-            return music.get();
-        } else {
-            throw new NotMusicFoundException("resource not found");
-        }
+        return music.orElseThrow(() -> new NotMusicFoundException("resource not found"));
     }
 
     @Override
     public Music createMusic(String composer, String representativeSong) {
-        Music music = new Music(composer, representativeSong);
-        musicMapper.createMusic(music);
-        return music;
+        Music musicData = new Music(composer, representativeSong);
+        musicMapper.createMusic(musicData);
+        return musicData;
     }
 
     @Override
     public void updateMusic(int id, String composer, String representativeSong) throws Exception {
-
+        Music UpdateMusic = musicMapper.findById(id).orElseThrow(() -> new NotMusicFoundException("resource not found"));
     }
 
     @Override
     public void deleteById(int id) {
-
     }
 }

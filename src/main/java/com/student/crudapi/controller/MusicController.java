@@ -30,8 +30,7 @@ import java.util.Map;
 @RestController
 public class MusicController {
 
-    private MusicService musicService;
-
+    private  MusicService musicService;
 
     public  MusicController(MusicService musicService){
         this.musicService = musicService;
