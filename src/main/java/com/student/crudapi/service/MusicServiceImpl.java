@@ -35,8 +35,11 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public void updateMusic(int id, String composer, String representativeSong) throws Exception {
-        Music UpdateMusic = musicMapper.findById(id).orElseThrow(() -> new NotMusicFoundException("resource not found"));
+    public void updateMusic(int id, String composer, String representativeSong) {
+        Music musicUpdate = musicMapper.findById(id).orElseThrow(() -> new NotMusicFoundException("resource not found"));
+        musicUpdate.setComposer(composer);
+        musicUpdate.setRepresentativeSong(representativeSong);
+        musicMapper.updateMusic(musicUpdate);
     }
 
     @Override

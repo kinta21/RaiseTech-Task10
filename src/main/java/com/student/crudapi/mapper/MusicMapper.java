@@ -24,8 +24,8 @@ public interface MusicMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void createMusic (Music createMusic);
 
-    @Update("UPDATE musics SET musics = #{composer}, #{representativeSong} WHERE id = #{id}")
-    void setUpdateMusic(Music updateMusic);
+    @Update("UPDATE musics SET composer = #{composer}, representativeSong = #{representativeSong} WHERE id = #{id}")
+    void updateMusic(Music updateMusic);
 
     @Delete("DELETE FROM names WHERE id = #{id}")
     void deleteById(int id);

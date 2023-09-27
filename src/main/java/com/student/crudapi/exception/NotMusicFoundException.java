@@ -3,9 +3,11 @@ package com.student.crudapi.exception;
 
 
 public class NotMusicFoundException extends RuntimeException {
+
     public NotMusicFoundException() {
         super();
     }
+
     public NotMusicFoundException(String message, Throwable cause) {
         super(message, cause);
     }
