@@ -2,17 +2,13 @@ package com.student.crudapi.controller;
 
 
 import com.student.crudapi.entity.Music;
-import com.student.crudapi.exception.NotMusicFoundException;
 import com.student.crudapi.form.MusicCreateForm;
 import com.student.crudapi.form.MusicUpdateForm;
 import com.student.crudapi.service.MusicService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -30,25 +25,14 @@ import java.util.Map;
 @RestController
 public class MusicController {
 
-    private MusicService musicService;
-
+    private  MusicService musicService;
 
     public  MusicController(MusicService musicService){
         this.musicService = musicService;
 
     }
 
-   @ExceptionHandler (value = NotMusicFoundException.class)
-   public  ResponseEntity<Map<String,String>> handleNoResourceFound(
-           NotMusicFoundException e, HttpServletRequest request){
-        Map<String, String> body = Map.of(
-                "timestamp", ZonedDateTime.now().toString(),
-                "status", String.valueOf(HttpStatus.NOT_FOUND.value()),
-                "error", HttpStatus.NOT_FOUND.getReasonPhrase(),
-                "message", e.getMessage(),
-                "path", request.getRequestURI());
-        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-   }
+
    
     @GetMapping("/musics")
     public List<Music> musics(){

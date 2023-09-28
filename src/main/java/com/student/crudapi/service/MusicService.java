@@ -15,6 +15,4 @@ public interface MusicService {
     void updateMusic(int id, String composer, String representativeSong) throws Exception;
 
     void deleteById(int id);
-
-
 }
